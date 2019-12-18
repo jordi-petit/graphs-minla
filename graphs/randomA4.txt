@@ -1,0 +1,2 @@
+Binomial random graph
+n=1000, p=0.0164

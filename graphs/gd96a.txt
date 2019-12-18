@@ -1,0 +1,4 @@
+Represents a finite automaton used in a natural-language processing system.
+
+http://portal.research.bell-labs.com/orgs/ssr/people/north/contest.html
+

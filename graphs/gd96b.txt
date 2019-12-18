@@ -1,0 +1,5 @@
+Represents the calls made between a set of telephone numbers. Such graphs
+are used by the police in the investigation of organized crime.
+
+http://portal.research.bell-labs.com/orgs/ssr/people/north/contest.html
+

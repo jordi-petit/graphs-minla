@@ -1,0 +1,50 @@
+
+<Graph>
+    <Title>
+        exemple <b>petitet</b>
+    </Title>
+    
+    <Author>
+        pepito
+    </Author>
+    
+    <Description>
+        bla bla llarg
+    </Description>
+
+
+    <NbNodes>5</NbNodes>
+    <NbEdges>8</NbEdges>
+    <Degrees>3 3 3 3 4</Degrees>
+    <AdjacencyList>1 3 4 0 2 4 1 3 4 0 2 4 0 1 2 3</AdjacencyList> 
+ 
+</Graph>
+
+
+<conf>
+    <input>small.xml</small>
+    <output>sortida,txt</output>
+    <reps>34</reps>
+    <factorgamma>0.2</factorgamma>
+</conf>
+
+
+<conf>
+    <input>small.xml</small>
+    <output>sortida,txt</output>
+    <factorbeta>0.2</factorbeta>
+    <cosa>
+        <djh>hg
+    </cosa>
+</conf>
+
+
+camps.txt:
+input
+output
+reps
+factorgzmma
+
+
+
+

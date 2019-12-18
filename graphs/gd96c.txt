@@ -1,0 +1,5 @@
+An artificial graph that has been designed as a special challenge for
+current algorithms.
+
+http://portal.research.bell-labs.com/orgs/ssr/people/north/contest.html
+

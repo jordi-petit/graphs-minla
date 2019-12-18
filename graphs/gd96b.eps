@@ -1,0 +1,1472 @@
+%!PS
+%%BoundingBox:     0    0  589  589
+%
+%!PS
+% Color Dictionary / adapted from color.pro
+% Graph Dictionary / drawing graphs
+% --------------------------------------------
+% Vladimir Batagelj
+% version 0: 27 mar 1994 experimental version
+% version 1: 12 nov 1994 basic set (color, a, e, ... )
+% version 2: 25 dec 1994 extensions
+% version 3:  5 jan 1995 arct/arcto - level2/level1 --> *arct
+% version 4: 12 jan 1995 ce, empty
+%
+
+/ColorDict 150 dict def
+
+ColorDict begin
+ /B {bind def} def
+ /GreenYellow   {0.15 0    0.69 0    }def
+ /Yellow        {0    0    1    0    }def
+ /Goldenrod     {0    0.10 0.84 0    }def
+ /Dandelion     {0    0.29 0.84 0    }def
+ /Apricot       {0    0.32 0.52 0    }def
+ /Peach         {0    0.50 0.70 0    }def
+ /Melon         {0    0.46 0.50 0    }def
+ /YellowOrange  {0    0.42 1    0    }def
+ /Orange        {0    0.61 0.87 0    }def
+ /BurntOrange   {0    0.51 1    0    }def
+ /Bittersweet   {0    0.75 1    0.24 }def
+ /RedOrange     {0    0.77 0.87 0    }def
+ /Mahogany      {0    0.85 0.87 0.35 }def
+ /Maroon        {0    0.87 0.68 0.32 }def
+ /BrickRed      {0    0.89 0.94 0.28 }def
+ /Red           {0    1    1    0    }def
+ /OrangeRed     {0    1    0.50 0    }def
+ /RubineRed     {0    1    0.13 0    }def
+ /WildStrawberry{0    0.96 0.39 0    }def
+ /Salmon        {0    0.53 0.38 0    }def
+ /CarnationPink {0    0.63 0    0    }def
+ /Magenta       {0    1    0    0    }def
+ /VioletRed     {0    0.81 0    0    }def
+ /Rhodamine     {0    0.82 0    0    }def
+ /Mulberry      {0.34 0.90 0    0.02 }def
+ /RedViolet     {0.07 0.90 0    0.34 }def
+ /Fuchsia       {0.47 0.91 0    0.08 }def
+ /Lavender      {0    0.48 0    0    }def
+ /Thistle       {0.12 0.59 0    0    }def
+ /Orchid        {0.32 0.64 0    0    }def
+ /DarkOrchid    {0.40 0.80 0.20 0    }def
+ /Purple        {0.45 0.86 0    0    }def
+ /Plum          {0.50 1    0    0    }def
+ /Violet        {0.79 0.88 0    0    }def
+ /RoyalPurple   {0.75 0.90 0    0    }def
+ /BlueViolet    {0.86 0.91 0    0.04 }def
+ /Periwinkle    {0.57 0.55 0    0    }def
+ /CadetBlue     {0.62 0.57 0.23 0    }def
+ /CornflowerBlue{0.65 0.13 0    0    }def
+ /MidnightBlue  {0.98 0.13 0    0.43 }def
+ /NavyBlue      {0.94 0.54 0    0    }def
+ /RoyalBlue     {1    0.50 0    0    }def
+ /Blue          {1    1    0    0    }def
+ /Cerulean      {0.94 0.11 0    0    }def
+ /Cyan          {1    0    0    0    }def
+ /ProcessBlue   {0.96 0    0    0    }def
+ /SkyBlue       {0.62 0    0.12 0    }def
+ /Turquoise     {0.85 0    0.20 0    }def
+ /TealBlue      {0.86 0    0.34 0.02 }def
+ /Aquamarine    {0.82 0    0.30 0    }def
+ /BlueGreen     {0.85 0    0.33 0    }def
+ /Emerald       {1    0    0.50 0    }def
+ /JungleGreen   {0.99 0    0.52 0    }def
+ /SeaGreen      {0.69 0    0.50 0    }def
+ /Green         {1    0    1    0    }def
+ /ForestGreen   {0.91 0    0.88 0.12 }def
+ /PineGreen     {0.92 0    0.59 0.25 }def
+ /LimeGreen     {0.50 0    1    0    }def
+ /YellowGreen   {0.44 0    0.74 0    }def
+ /SpringGreen   {0.26 0    0.76 0    }def
+ /OliveGreen    {0.64 0    0.95 0.40 }def
+ /RawSienna     {0 0.72    1    0.45 }def
+ /Sepia         {0 0.83    1    0.70 }def
+ /Brown         {0 0.81    1    0.60 }def
+ /Tan           {0.14 0.42 0.56 0    }def
+ /Gray          {0    0    0    0.50 }def
+ /Black         {0    0    0    1    }def
+ /White         {0    0    0    0    }def
+ /LightYellow   {0    0    0.4  0    }def
+ /LightCyan     {0.2  0    0    0    }def
+ /LightMagenta  {0    0.2  0    0    }def
+ /LightPurple   {0.2  0.2  0    0    }def
+ /LightGreen    {0.2  0    0.3  0    }def
+ /LightOrange   {0    0.2  0.3  0    }def
+ /Canary        {0    0    0.50 0    }def  
+ /LFadedGreen   {0.10 0    0.20 0    }def
+ /Pink          {0    0.15 0.05 0    }def  
+ /LSkyBlue      {0.15 0.05 0    0    }def
+end
+
+/GraphPic 50 dict def
+
+GraphPic begin
+% level1/level2
+  /arct* {arcto 4 {pop} repeat} bind def
+
+  /languagelevel where
+    {pop languagelevel}{1} ifelse
+  2 lt {
+    /*arct /arct* load def
+  }{
+    /*arct /arct load def
+  } ifelse
+
+% Parameters
+  /fos 15 def          % font size
+  /h  9 def            % arrow height
+  /d 10 def            % arrow depth
+  /o  5 def            % arrow width
+  /ic { White } def    % interior color (fill)
+  /bc { Black } def    % boundary color
+  /bw { 1 } def        % boundary width
+  /r  { 5 } def        % oval radius
+  /q  { 0.5 } def      % hexagon
+  /setFontSize { /fos exch def } def
+  /setArrHeight { /h exch def } def
+  /setArrDepth { /d exch def } def
+  /setArrWidth { /o exch def } def
+% Dash Patterns
+  /Solid { [ ] 0 } def
+  /Dashed { [4 3] 2 } def
+  /Dots { [3 6] 2 } def
+  /c {setcmykcolor} def
+% labels
+  /l { % text angle x y
+    gsave moveto rotate c show grestore } def
+  /cl { % text angle x y
+    gsave moveto rotate c dup stringwidth exch 2 div neg exch fos add
+    2.5 div neg rmoveto show grestore } def
+% arrows
+  /arrowA { newpath -10 0 moveto 15 h lineto d 0 lineto 15 h neg lineto
+    closepath gsave fill grestore 0 setlinejoin 0.1 setlinewidth stroke } def
+  /arrowB { /Bl { h h mul 625 add sqrt } bind def /Bd { -10 o Bl mul h div
+    add} bind def /Bg { h o Bl mul 25 div sub } bind def newpath 15 h moveto
+    -10 0 lineto 15 h neg lineto 15 Bg neg lineto Bd 0 lineto 15 Bg lineto
+    closepath gsave fill grestore 0 setlinejoin 0.1 setlinewidth Solid
+    setdash stroke } def
+  /ArrowA {  % size alpha x y
+    gsave translate pop rotate 0.2 mul dup scale arrowA grestore } def
+  /ArrowB {  %   alpha x y
+    gsave translate pop rotate 0.2 mul dup scale arrowB grestore } def
+% vertex
+  /v { % bndcolor w intcolor x y radius
+    0 360 arc gsave c fill grestore setlinewidth c stroke } def
+% edge
+  /e { % width color dashpat u1 v1 u2 v2 x2 y2 x1 y1
+    moveto curveto setdash c setlinewidth stroke } def
+% oval edge
+  /oe { % width color dashpat r u1 v1 x2 y2 x1 y1
+    moveto 2 copy 7 1 roll 7 1 roll 5 -1 roll *arct
+    lineto setdash c setlinewidth stroke } def
+% circular edge
+  /ce { % width color dashpat x y r a1 a2
+    arc setdash c setlinewidth stroke } def
+% straight edge
+  /se { % width color dashpat x2 y2 x1 y1
+    moveto lineto setdash c setlinewidth stroke } def
+% arc
+  /a { % arrow size angle width color dashpat u1 v1 u2 v2 x2 y2 x1 y1
+    moveto curveto setdash c dup setlinewidth currentpoint 6 -1 roll
+    cvx exec stroke } def
+% straight arc
+  /sa { % arrow size angle width color dashpat x2 y2 x1 y1
+    moveto lineto setdash c dup setlinewidth currentpoint 6 -1 roll
+    cvx exec stroke } def
+% circle
+  /circle {
+    0 0 10 0 360 arc gsave ic c fill grestore bw setlinewidth
+    bc c stroke } def
+% square
+  /square { -10 -10 moveto 0 20 rlineto 20 0 rlineto 0 -20 rlineto
+    -20 0 rlineto gsave ic c fill grestore bw setlinewidth bc c stroke } def
+% cross
+  /cross { 0 -10 moveto 0 20 rlineto -10 0 moveto 20 0 rlineto
+     bw setlinewidth bc c stroke } def
+% box
+  /box { % a b
+    /q_b exch def /q_a exch def newpath 0 q_b moveto q_a neg q_b q_a neg 0 r
+    *arct q_a neg q_b neg  0 q_b neg  r  *arct q_a q_b neg  q_a 0  r  *arct
+    q_a q_b  0 q_b  r  *arct closepath gsave ic c fill
+    grestore bw setlinewidth bc c stroke } def
+% diamond
+  /diamond { % a b
+    /d_b exch def /d_a exch def /d_c {d_a q mul} def
+    newpath 0 d_b moveto d_c neg d_b  d_a neg 0  r  *arct
+    d_a neg 0 d_c neg d_b neg r *arct d_c neg d_b neg d_c d_b neg r *arct
+    d_c d_b neg d_a 0 r *arct d_a 0 d_c d_b r *arct d_c d_b 0 d_b r *arct
+    closepath gsave ic c fill grestore bw setlinewidth
+    bc c stroke } def
+% ellipse
+  /ellipse { % a b
+    /q_b exch def /q_a exch def newpath /m matrix currentmatrix def
+    q_a q_b scale 0 0 1 0 360 arc closepath m setmatrix gsave ic c fill
+    grestore bw setlinewidth bc c stroke } def
+% helicopter
+  /helicopter{ ic c 16 6 false [16 0 0 6 0 0]
+      {<dd ff 00 ff 54 1f 80 03 fb f9 00 1e>} imagemask} def
+% empty
+  /empty { } def
+% figure scaled:   x_size y_size phi x y  fs
+  /fs { gsave translate rotate scale cvx exec grestore } def
+% figure absolute: x_size y_size phi x y  fa
+  /fa { gsave translate rotate 3 -1 roll cvx exec grestore } def
+end
+
+% Straight Arc: type size angle width color pattern x2 y2 x1 y1 sa
+% Bezier Arc: type size angle width color pattern u1 v1 u2 v2 x2 y2 x1 y1 a
+% Straight Edge: width color pattern x2 y2 x1 y1 se
+% Bezier Edge: width color pattern u1 v1 u2 v2 x2 y2 x1 y1 e
+% Vertex: colorbnd widthbnd colorinside x y r v
+% Label: (label) color angle x y cl
+%
+ColorDict begin GraphPic begin
+/Helvetica fos selectfont
+%
+% Edge:    10    4
+    0.60 Black Solid   562.80   96.00  440.40  229.20    se
+/ArrowA     1.00  132.58    0.60 Black Solid   501.60  162.60  501.60  162.60    sa
+% Edge:    10    1
+    0.60 Black Solid   288.00  216.00  440.40  229.20    se
+/ArrowA     1.00    4.95    0.60 Black Solid   364.20  222.60  364.20  222.60    sa
+% Edge:    11   12
+    0.60 Black Solid   486.00  276.00  486.00  320.40    se
+/ArrowA     1.00   90.00    0.60 Black Solid   486.00  298.20  486.00  298.20    sa
+% Edge:    11    8
+    0.60 Black Solid   486.00  373.20  486.00  320.40    se
+/ArrowA     1.00  270.00    0.60 Black Solid   486.00  346.80  486.00  346.80    sa
+% Edge:    18   17
+    0.60 Black Solid   315.60  169.20  301.20  134.40    se
+/ArrowA     1.00  247.52    0.60 Black Solid   308.40  151.80  308.40  151.80    sa
+% Edge:    18    3
+    0.60 Black Solid   309.60  103.20  301.20  134.40    se
+/ArrowA     1.00  105.07    0.60 Black Solid   305.40  118.80  305.40  118.80    sa
+% Edge:    19    5
+    0.60 Black Solid   288.00  241.20  448.80  373.20    se
+/ArrowA     1.00   39.38    0.60 Black Solid   368.40  307.20  368.40  307.20    sa
+% Edge:    19    7
+    0.60 Black Solid   526.80  442.80  448.80  373.20    se
+/ArrowA     1.00  221.74    0.60 Black Solid   487.80  408.00  487.80  408.00    sa
+% Edge:    20    8
+    0.60 Black Solid   486.00  373.20  438.00  320.40    se
+/ArrowA     1.00  227.73    0.60 Black Solid   462.00  346.80  462.00  346.80    sa
+% Edge:    20   12
+    0.60 Black Solid   486.00  276.00  438.00  320.40    se
+/ArrowA     1.00  137.23    0.60 Black Solid   462.00  298.20  462.00  298.20    sa
+% Edge:    21    8
+    0.60 Black Solid   486.00  373.20  469.20  320.40    se
+/ArrowA     1.00  252.35    0.60 Black Solid   477.60  346.80  477.60  346.80    sa
+% Edge:    21   12
+    0.60 Black Solid   486.00  276.00  469.20  320.40    se
+/ArrowA     1.00  110.73    0.60 Black Solid   477.60  298.20  477.60  298.20    sa
+% Edge:    22   13
+    0.60 Black Solid   291.60  279.60  409.20  460.80    se
+/ArrowA     1.00   57.02    0.60 Black Solid   350.40  370.20  350.40  370.20    sa
+% Edge:    22   16
+    0.60 Black Solid   288.00  544.80  409.20  460.80    se
+/ArrowA     1.00  325.28    0.60 Black Solid   348.60  502.80  348.60  502.80    sa
+% Edge:    24   13
+    0.60 Black Solid   291.60  279.60  288.00  328.80    se
+/ArrowA     1.00   94.18    0.60 Black Solid   289.80  304.20  289.80  304.20    sa
+% Edge:    24   14
+    0.60 Black Solid   288.00  367.20  288.00  328.80    se
+/ArrowA     1.00  270.00    0.60 Black Solid   288.00  348.00  288.00  348.00    sa
+% Edge:    25    1
+    0.60 Black Solid   288.00  216.00   91.20  319.20    se
+/ArrowA     1.00  152.33    0.60 Black Solid   189.60  267.60  189.60  267.60    sa
+% Edge:    25    9
+    0.60 Black Solid     8.40   96.00   91.20  319.20    se
+/ArrowA     1.00   69.65    0.60 Black Solid    49.80  207.60   49.80  207.60    sa
+% Edge:    26   16
+    0.60 Black Solid   288.00  544.80  392.40  457.20    se
+/ArrowA     1.00  320.00    0.60 Black Solid   340.20  501.00  340.20  501.00    sa
+% Edge:    26   14
+    0.60 Black Solid   288.00  367.20  392.40  457.20    se
+/ArrowA     1.00   40.76    0.60 Black Solid   340.20  412.20  340.20  412.20    sa
+% Edge:    27    1
+    0.60 Black Solid   288.00  216.00   46.80  417.60    se
+/ArrowA     1.00  140.11    0.60 Black Solid   167.40  316.80  167.40  316.80    sa
+% Edge:    27    9
+    0.60 Black Solid     8.40   96.00   46.80  417.60    se
+/ArrowA     1.00   83.19    0.60 Black Solid    27.60  256.80   27.60  256.80    sa
+% Edge:    28   17
+    0.60 Black Solid   315.60  169.20  304.80  190.80    se
+/ArrowA     1.00  116.57    0.60 Black Solid   310.20  180.00  310.20  180.00    sa
+% Edge:    28    1
+    0.60 Black Solid   288.00  216.00  304.80  190.80    se
+/ArrowA     1.00  303.69    0.60 Black Solid   296.40  203.40  296.40  203.40    sa
+% Edge:    29    4
+    0.60 Black Solid   562.80   96.00  567.60  480.00    se
+/ArrowA     1.00   89.28    0.60 Black Solid   565.20  288.00  565.20  288.00    sa
+% Edge:    29    6
+    0.60 Black Solid   288.00  567.60  567.60  480.00    se
+/ArrowA     1.00  342.60    0.60 Black Solid   427.80  523.80  427.80  523.80    sa
+% Edge:    30   31
+    0.60 Black Solid   355.20   80.40  309.60   74.40    se
+/ArrowA     1.00  187.50    0.60 Black Solid   332.40   77.40  332.40   77.40    sa
+% Edge:    30    3
+    0.60 Black Solid   309.60  103.20  309.60   74.40    se
+/ArrowA     1.00  270.00    0.60 Black Solid   309.60   88.80  309.60   88.80    sa
+% Edge:    32    9
+    0.60 Black Solid     8.40   96.00   81.60  336.00    se
+/ArrowA     1.00   73.04    0.60 Black Solid    45.00  216.00   45.00  216.00    sa
+% Edge:    32    1
+    0.60 Black Solid   288.00  216.00   81.60  336.00    se
+/ArrowA     1.00  149.83    0.60 Black Solid   184.80  276.00  184.80  276.00    sa
+% Edge:    34    6
+    0.60 Black Solid   288.00  567.60   91.20  463.20    se
+/ArrowA     1.00  207.95    0.60 Black Solid   189.60  515.40  189.60  515.40    sa
+% Edge:    34    1
+    0.60 Black Solid   288.00  216.00   91.20  463.20    se
+/ArrowA     1.00  128.52    0.60 Black Solid   189.60  339.60  189.60  339.60    sa
+% Edge:    35    6
+    0.60 Black Solid   288.00  567.60  172.80  451.20    se
+/ArrowA     1.00  225.30    0.60 Black Solid   230.40  509.40  230.40  509.40    sa
+% Edge:    35   36
+    0.60 Black Solid   210.00  465.60  172.80  451.20    se
+/ArrowA     1.00  201.16    0.60 Black Solid   191.40  458.40  191.40  458.40    sa
+% Edge:    35   37
+    0.60 Black Solid   204.00  423.60  172.80  451.20    se
+/ArrowA     1.00  138.50    0.60 Black Solid   188.40  437.40  188.40  437.40    sa
+% Edge:    35    1
+    0.60 Black Solid   288.00  216.00  172.80  451.20    se
+/ArrowA     1.00  116.10    0.60 Black Solid   230.40  333.60  230.40  333.60    sa
+% Edge:    38    4
+    0.60 Black Solid   562.80   96.00  432.00  195.60    se
+/ArrowA     1.00  142.71    0.60 Black Solid   497.40  145.80  497.40  145.80    sa
+% Edge:    38    1
+    0.60 Black Solid   288.00  216.00  432.00  195.60    se
+/ArrowA     1.00  351.94    0.60 Black Solid   360.00  205.80  360.00  205.80    sa
+% Edge:    39    1
+    0.60 Black Solid   288.00  216.00  214.80  136.80    se
+/ArrowA     1.00  227.25    0.60 Black Solid   251.40  176.40  251.40  176.40    sa
+% Edge:    39    9
+    0.60 Black Solid     8.40   96.00  214.80  136.80    se
+/ArrowA     1.00   11.18    0.60 Black Solid   111.60  116.40  111.60  116.40    sa
+% Edge:    40    5
+    0.60 Black Solid   288.00  241.20  464.40  408.00    se
+/ArrowA     1.00   43.40    0.60 Black Solid   376.20  324.60  376.20  324.60    sa
+% Edge:    40    7
+    0.60 Black Solid   526.80  442.80  464.40  408.00    se
+/ArrowA     1.00  209.15    0.60 Black Solid   495.60  425.40  495.60  425.40    sa
+% Edge:    41   16
+    0.60 Black Solid   288.00  544.80  296.40  446.40    se
+/ArrowA     1.00  274.88    0.60 Black Solid   292.20  495.60  292.20  495.60    sa
+% Edge:    41   14
+    0.60 Black Solid   288.00  367.20  296.40  446.40    se
+/ArrowA     1.00   83.95    0.60 Black Solid   292.20  406.80  292.20  406.80    sa
+% Edge:    42    1
+    0.60 Black Solid   288.00  216.00  254.40   92.40    se
+/ArrowA     1.00  254.79    0.60 Black Solid   271.20  154.20  271.20  154.20    sa
+% Edge:    42    9
+    0.60 Black Solid     8.40   96.00  254.40   92.40    se
+/ArrowA     1.00  359.16    0.60 Black Solid   131.40   94.20  131.40   94.20    sa
+% Edge:    43    1
+    0.60 Black Solid   288.00  216.00   67.20  368.40    se
+/ArrowA     1.00  145.39    0.60 Black Solid   177.60  292.20  177.60  292.20    sa
+% Edge:    43    9
+    0.60 Black Solid     8.40   96.00   67.20  368.40    se
+/ArrowA     1.00   77.82    0.60 Black Solid    37.80  232.20   37.80  232.20    sa
+% Edge:    44    1
+    0.60 Black Solid   288.00  216.00  123.60  258.00    se
+/ArrowA     1.00  165.67    0.60 Black Solid   205.80  237.00  205.80  237.00    sa
+% Edge:    44    9
+    0.60 Black Solid     8.40   96.00  123.60  258.00    se
+/ArrowA     1.00   54.58    0.60 Black Solid    66.00  177.00   66.00  177.00    sa
+% Edge:    45    1
+    0.60 Black Solid   288.00  216.00   46.80  469.20    se
+/ArrowA     1.00  133.61    0.60 Black Solid   167.40  342.60  167.40  342.60    sa
+% Edge:    45    6
+    0.60 Black Solid   288.00  567.60   46.80  469.20    se
+/ArrowA     1.00  202.19    0.60 Black Solid   167.40  518.40  167.40  518.40    sa
+% Edge:    46    1
+    0.60 Black Solid   288.00  216.00   54.00  400.80    se
+/ArrowA     1.00  141.70    0.60 Black Solid   171.00  308.40  171.00  308.40    sa
+% Edge:    46    9
+    0.60 Black Solid     8.40   96.00   54.00  400.80    se
+/ArrowA     1.00   81.49    0.60 Black Solid    31.20  248.40   31.20  248.40    sa
+% Edge:    47    9
+    0.60 Black Solid     8.40   96.00    9.60  480.00    se
+/ArrowA     1.00   89.82    0.60 Black Solid     9.00  288.00    9.00  288.00    sa
+% Edge:    47    6
+    0.60 Black Solid   288.00  567.60    9.60  480.00    se
+/ArrowA     1.00  197.47    0.60 Black Solid   148.80  523.80  148.80  523.80    sa
+% Edge:    48   16
+    0.60 Black Solid   288.00  544.80  327.60  451.20    se
+/ArrowA     1.00  292.93    0.60 Black Solid   307.80  498.00  307.80  498.00    sa
+% Edge:    48   14
+    0.60 Black Solid   288.00  367.20  327.60  451.20    se
+/ArrowA     1.00   64.76    0.60 Black Solid   307.80  409.20  307.80  409.20    sa
+% Edge:    49   16
+    0.60 Black Solid   288.00  544.80  444.00  465.60    se
+/ArrowA     1.00  333.08    0.60 Black Solid   366.00  505.20  366.00  505.20    sa
+% Edge:    49   13
+    0.60 Black Solid   291.60  279.60  444.00  465.60    se
+/ArrowA     1.00   50.67    0.60 Black Solid   367.80  372.60  367.80  372.60    sa
+% Edge:    50    9
+    0.60 Black Solid     8.40   96.00  288.00   16.80    se
+/ArrowA     1.00  344.18    0.60 Black Solid   148.20   56.40  148.20   56.40    sa
+% Edge:    50    4
+    0.60 Black Solid   562.80   96.00  288.00   16.80    se
+/ArrowA     1.00  196.08    0.60 Black Solid   425.40   56.40  425.40   56.40    sa
+% Edge:    51    8
+    0.60 Black Solid   486.00  373.20  453.60  320.40    se
+/ArrowA     1.00  238.47    0.60 Black Solid   469.80  346.80  469.80  346.80    sa
+% Edge:    51   12
+    0.60 Black Solid   486.00  276.00  453.60  320.40    se
+/ArrowA     1.00  126.12    0.60 Black Solid   469.80  298.20  469.80  298.20    sa
+% Edge:    52    4
+    0.60 Black Solid   562.80   96.00  422.40  165.60    se
+/ArrowA     1.00  153.63    0.60 Black Solid   492.60  130.80  492.60  130.80    sa
+% Edge:    52    1
+    0.60 Black Solid   288.00  216.00  422.40  165.60    se
+/ArrowA     1.00  339.44    0.60 Black Solid   355.20  190.80  355.20  190.80    sa
+% Edge:    53    6
+    0.60 Black Solid   288.00  567.60  151.20  456.00    se
+/ArrowA     1.00  219.21    0.60 Black Solid   219.60  511.80  219.60  511.80    sa
+% Edge:    53    1
+    0.60 Black Solid   288.00  216.00  151.20  456.00    se
+/ArrowA     1.00  119.68    0.60 Black Solid   219.60  336.00  219.60  336.00    sa
+% Edge:    54    1
+    0.60 Black Solid   288.00  216.00  116.40  272.40    se
+/ArrowA     1.00  161.81    0.60 Black Solid   202.20  244.20  202.20  244.20    sa
+% Edge:    54    9
+    0.60 Black Solid     8.40   96.00  116.40  272.40    se
+/ArrowA     1.00   58.52    0.60 Black Solid    62.40  184.20   62.40  184.20    sa
+% Edge:    55    5
+    0.60 Black Solid   288.00  241.20  481.20  471.60    se
+/ArrowA     1.00   50.02    0.60 Black Solid   384.60  356.40  384.60  356.40    sa
+% Edge:    55   16
+    0.60 Black Solid   288.00  544.80  481.20  471.60    se
+/ArrowA     1.00  339.25    0.60 Black Solid   384.60  508.20  384.60  508.20    sa
+% Edge:    55   13
+    0.60 Black Solid   291.60  279.60  481.20  471.60    se
+/ArrowA     1.00   45.36    0.60 Black Solid   386.40  375.60  386.40  375.60    sa
+% Edge:    56    7
+    0.60 Black Solid   526.80  442.80  500.40  475.20    se
+/ArrowA     1.00  129.17    0.60 Black Solid   513.60  459.00  513.60  459.00    sa
+% Edge:    56   16
+    0.60 Black Solid   288.00  544.80  500.40  475.20    se
+/ArrowA     1.00  341.86    0.60 Black Solid   394.20  510.00  394.20  510.00    sa
+% Edge:    56    5
+    0.60 Black Solid   288.00  241.20  500.40  475.20    se
+/ArrowA     1.00   47.77    0.60 Black Solid   394.20  358.20  394.20  358.20    sa
+% Edge:    57    2
+    0.60 Black Solid   363.60  124.80  357.60  160.80    se
+/ArrowA     1.00   99.46    0.60 Black Solid   360.60  142.80  360.60  142.80    sa
+% Edge:    57   23
+    0.60 Black Solid   387.60  144.00  357.60  160.80    se
+/ArrowA     1.00  150.75    0.60 Black Solid   372.60  152.40  372.60  152.40    sa
+% Edge:    57   17
+    0.60 Black Solid   315.60  169.20  357.60  160.80    se
+/ArrowA     1.00  348.69    0.60 Black Solid   336.60  165.00  336.60  165.00    sa
+% Edge:    58    4
+    0.60 Black Solid   562.80   96.00  416.40  150.00    se
+/ArrowA     1.00  159.75    0.60 Black Solid   489.60  123.00  489.60  123.00    sa
+% Edge:    58    1
+    0.60 Black Solid   288.00  216.00  416.40  150.00    se
+/ArrowA     1.00  332.80    0.60 Black Solid   352.20  183.00  352.20  183.00    sa
+% Edge:    59    9
+    0.60 Black Solid     8.40   96.00   98.40  304.80    se
+/ArrowA     1.00   66.68    0.60 Black Solid    53.40  200.40   53.40  200.40    sa
+% Edge:    59    1
+    0.60 Black Solid   288.00  216.00   98.40  304.80    se
+/ArrowA     1.00  154.90    0.60 Black Solid   193.20  260.40  193.20  260.40    sa
+% Edge:    60    1
+    0.60 Black Solid   288.00  216.00  159.60  205.20    se
+/ArrowA     1.00  184.81    0.60 Black Solid   223.80  210.60  223.80  210.60    sa
+% Edge:    60    9
+    0.60 Black Solid     8.40   96.00  159.60  205.20    se
+/ArrowA     1.00   35.84    0.60 Black Solid    84.00  150.60   84.00  150.60    sa
+% Edge:    61    1
+    0.60 Black Solid   288.00  216.00  264.00   80.40    se
+/ArrowA     1.00  259.96    0.60 Black Solid   276.00  148.20  276.00  148.20    sa
+% Edge:    61    9
+    0.60 Black Solid     8.40   96.00  264.00   80.40    se
+/ArrowA     1.00  356.51    0.60 Black Solid   136.20   88.20  136.20   88.20    sa
+% Edge:    62    4
+    0.60 Black Solid   562.80   96.00  288.00   34.80    se
+/ArrowA     1.00  192.56    0.60 Black Solid   425.40   65.40  425.40   65.40    sa
+% Edge:    62    9
+    0.60 Black Solid     8.40   96.00  288.00   34.80    se
+/ArrowA     1.00  347.65    0.60 Black Solid   148.20   65.40  148.20   65.40    sa
+% Edge:    63   13
+    0.60 Black Solid   291.60  279.60  307.20  328.80    se
+/ArrowA     1.00   72.41    0.60 Black Solid   299.40  304.20  299.40  304.20    sa
+% Edge:    63   14
+    0.60 Black Solid   288.00  367.20  307.20  328.80    se
+/ArrowA     1.00  296.57    0.60 Black Solid   297.60  348.00  297.60  348.00    sa
+% Edge:    64    9
+    0.60 Black Solid     8.40   96.00   74.40  351.60    se
+/ArrowA     1.00   75.52    0.60 Black Solid    41.40  223.80   41.40  223.80    sa
+% Edge:    64    1
+    0.60 Black Solid   288.00  216.00   74.40  351.60    se
+/ArrowA     1.00  147.59    0.60 Black Solid   181.20  283.80  181.20  283.80    sa
+% Edge:    65    9
+    0.60 Black Solid     8.40   96.00   39.60  434.40    se
+/ArrowA     1.00   84.73    0.60 Black Solid    24.00  265.20   24.00  265.20    sa
+% Edge:    65    1
+    0.60 Black Solid   288.00  216.00   39.60  434.40    se
+/ArrowA     1.00  138.68    0.60 Black Solid   163.80  325.20  163.80  325.20    sa
+% Edge:    66   16
+    0.60 Black Solid   288.00  544.80  343.20  453.60    se
+/ArrowA     1.00  301.18    0.60 Black Solid   315.60  499.20  315.60  499.20    sa
+% Edge:    66   14
+    0.60 Black Solid   288.00  367.20  343.20  453.60    se
+/ArrowA     1.00   57.43    0.60 Black Solid   315.60  410.40  315.60  410.40    sa
+% Edge:    67   12
+    0.60 Black Solid   486.00  276.00  422.40  320.40    se
+/ArrowA     1.00  145.08    0.60 Black Solid   454.20  298.20  454.20  298.20    sa
+% Edge:    67    8
+    0.60 Black Solid   486.00  373.20  422.40  320.40    se
+/ArrowA     1.00  219.70    0.60 Black Solid   454.20  346.80  454.20  346.80    sa
+% Edge:    68    9
+    0.60 Black Solid     8.40   96.00  177.60  182.40    se
+/ArrowA     1.00   27.05    0.60 Black Solid    93.00  139.20   93.00  139.20    sa
+% Edge:    68    1
+    0.60 Black Solid   288.00  216.00  177.60  182.40    se
+/ArrowA     1.00  196.93    0.60 Black Solid   232.80  199.20  232.80  199.20    sa
+% Edge:    69    1
+    0.60 Black Solid   288.00  216.00  132.00  458.40    se
+/ArrowA     1.00  122.76    0.60 Black Solid   210.00  337.20  210.00  337.20    sa
+% Edge:    69    6
+    0.60 Black Solid   288.00  567.60  132.00  458.40    se
+/ArrowA     1.00  214.99    0.60 Black Solid   210.00  513.00  210.00  513.00    sa
+% Edge:    70   12
+    0.60 Black Solid   486.00  276.00  518.40  320.40    se
+/ArrowA     1.00   53.88    0.60 Black Solid   502.20  298.20  502.20  298.20    sa
+% Edge:    70    8
+    0.60 Black Solid   486.00  373.20  518.40  320.40    se
+/ArrowA     1.00  301.53    0.60 Black Solid   502.20  346.80  502.20  346.80    sa
+% Edge:    71    1
+    0.60 Black Solid   288.00  216.00  133.20  244.80    se
+/ArrowA     1.00  169.46    0.60 Black Solid   210.60  230.40  210.60  230.40    sa
+% Edge:    71    9
+    0.60 Black Solid     8.40   96.00  133.20  244.80    se
+/ArrowA     1.00   50.01    0.60 Black Solid    70.80  170.40   70.80  170.40    sa
+% Edge:    72    9
+    0.60 Black Solid     8.40   96.00   61.20  384.00    se
+/ArrowA     1.00   79.61    0.60 Black Solid    34.80  240.00   34.80  240.00    sa
+% Edge:    72    1
+    0.60 Black Solid   288.00  216.00   61.20  384.00    se
+/ArrowA     1.00  143.47    0.60 Black Solid   174.60  300.00  174.60  300.00    sa
+% Edge:    73   17
+    0.60 Black Solid   315.60  169.20  338.40  141.60    se
+/ArrowA     1.00  309.56    0.60 Black Solid   327.00  155.40  327.00  155.40    sa
+% Edge:    73    2
+    0.60 Black Solid   363.60  124.80  338.40  141.60    se
+/ArrowA     1.00  146.31    0.60 Black Solid   351.00  133.20  351.00  133.20    sa
+% Edge:    74    3
+    0.60 Black Solid   309.60  103.20  394.80  108.00    se
+/ArrowA     1.00    3.22    0.60 Black Solid   352.20  105.60  352.20  105.60    sa
+% Edge:    74   23
+    0.60 Black Solid   387.60  144.00  394.80  108.00    se
+/ArrowA     1.00  281.31    0.60 Black Solid   391.20  126.00  391.20  126.00    sa
+% Edge:    75   16
+    0.60 Black Solid   288.00  544.80  312.00  448.80    se
+/ArrowA     1.00  284.04    0.60 Black Solid   300.00  496.80  300.00  496.80    sa
+% Edge:    75   14
+    0.60 Black Solid   288.00  367.20  312.00  448.80    se
+/ArrowA     1.00   73.61    0.60 Black Solid   300.00  408.00  300.00  408.00    sa
+% Edge:    76    4
+    0.60 Black Solid   562.80   96.00  448.80  260.40    se
+/ArrowA     1.00  124.74    0.60 Black Solid   505.80  178.20  505.80  178.20    sa
+% Edge:    76    1
+    0.60 Black Solid   288.00  216.00  448.80  260.40    se
+/ArrowA     1.00   15.44    0.60 Black Solid   368.40  238.20  368.40  238.20    sa
+% Edge:    77    1
+    0.60 Black Solid   288.00  216.00  444.00  244.80    se
+/ArrowA     1.00   10.46    0.60 Black Solid   366.00  230.40  366.00  230.40    sa
+% Edge:    77    4
+    0.60 Black Solid   562.80   96.00  444.00  244.80    se
+/ArrowA     1.00  128.60    0.60 Black Solid   503.40  170.40  503.40  170.40    sa
+% Edge:    78   16
+    0.60 Black Solid   288.00  544.80  426.00  463.20    se
+/ArrowA     1.00  329.40    0.60 Black Solid   357.00  504.00  357.00  504.00    sa
+% Edge:    78   13
+    0.60 Black Solid   291.60  279.60  426.00  463.20    se
+/ArrowA     1.00   53.79    0.60 Black Solid   358.80  371.40  358.80  371.40    sa
+% Edge:    79    4
+    0.60 Black Solid   562.80   96.00  453.60  276.00    se
+/ArrowA     1.00  121.24    0.60 Black Solid   508.20  186.00  508.20  186.00    sa
+% Edge:    79    5
+    0.60 Black Solid   288.00  241.20  453.60  276.00    se
+/ArrowA     1.00   11.87    0.60 Black Solid   370.80  258.60  370.80  258.60    sa
+% Edge:    80    7
+    0.60 Black Solid   526.80  442.80  526.80  408.00    se
+/ArrowA     1.00  270.00    0.60 Black Solid   526.80  425.40  526.80  425.40    sa
+% Edge:    80    8
+    0.60 Black Solid   486.00  373.20  526.80  408.00    se
+/ArrowA     1.00   40.46    0.60 Black Solid   506.40  390.60  506.40  390.60    sa
+% Edge:    81   16
+    0.60 Black Solid   288.00  544.80  241.20  441.60    se
+/ArrowA     1.00  245.61    0.60 Black Solid   264.60  493.20  264.60  493.20    sa
+% Edge:    81   13
+    0.60 Black Solid   291.60  279.60  241.20  441.60    se
+/ArrowA     1.00  107.28    0.60 Black Solid   266.40  360.60  266.40  360.60    sa
+% Edge:    81   37
+    0.60 Black Solid   204.00  423.60  241.20  441.60    se
+/ArrowA     1.00   25.82    0.60 Black Solid   222.60  432.60  222.60  432.60    sa
+% Edge:    81   36
+    0.60 Black Solid   210.00  465.60  241.20  441.60    se
+/ArrowA     1.00  322.43    0.60 Black Solid   225.60  453.60  225.60  453.60    sa
+% Edge:    81   14
+    0.60 Black Solid   288.00  367.20  241.20  441.60    se
+/ArrowA     1.00  122.17    0.60 Black Solid   264.60  404.40  264.60  404.40    sa
+% Edge:    81    5
+    0.60 Black Solid   288.00  241.20  241.20  441.60    se
+/ArrowA     1.00  103.14    0.60 Black Solid   264.60  341.40  264.60  341.40    sa
+% Edge:    82    1
+    0.60 Black Solid   288.00  216.00  232.80  116.40    se
+/ArrowA     1.00  241.00    0.60 Black Solid   260.40  166.20  260.40  166.20    sa
+% Edge:    82    9
+    0.60 Black Solid     8.40   96.00  232.80  116.40    se
+/ArrowA     1.00    5.19    0.60 Black Solid   120.60  106.20  120.60  106.20    sa
+% Edge:    83    1
+    0.60 Black Solid   288.00  216.00   68.40  465.60    se
+/ArrowA     1.00  131.34    0.60 Black Solid   178.20  340.80  178.20  340.80    sa
+% Edge:    83    6
+    0.60 Black Solid   288.00  567.60   68.40  465.60    se
+/ArrowA     1.00  204.91    0.60 Black Solid   178.20  516.60  178.20  516.60    sa
+% Edge:    84    6
+    0.60 Black Solid   288.00  567.60   22.80  474.00    se
+/ArrowA     1.00  199.44    0.60 Black Solid   155.40  520.80  155.40  520.80    sa
+% Edge:    84    1
+    0.60 Black Solid   288.00  216.00   22.80  474.00    se
+/ArrowA     1.00  135.79    0.60 Black Solid   155.40  345.00  155.40  345.00    sa
+% Edge:    84    9
+    0.60 Black Solid     8.40   96.00   22.80  474.00    se
+/ArrowA     1.00   87.82    0.60 Black Solid    15.60  285.00   15.60  285.00    sa
+% Edge:    85   23
+    0.60 Black Solid   387.60  144.00  418.80  128.40    se
+/ArrowA     1.00  333.43    0.60 Black Solid   403.20  136.20  403.20  136.20    sa
+% Edge:    85   33
+    0.60 Black Solid   453.60  118.80  418.80  128.40    se
+/ArrowA     1.00  164.58    0.60 Black Solid   436.20  123.60  436.20  123.60    sa
+% Edge:    86    4
+    0.60 Black Solid   562.80   96.00  436.80  212.40    se
+/ArrowA     1.00  137.27    0.60 Black Solid   499.80  154.20  499.80  154.20    sa
+% Edge:    86    1
+    0.60 Black Solid   288.00  216.00  436.80  212.40    se
+/ArrowA     1.00  358.61    0.60 Black Solid   362.40  214.20  362.40  214.20    sa
+% Edge:    87    8
+    0.60 Black Solid   486.00  373.20  502.80  320.40    se
+/ArrowA     1.00  287.65    0.60 Black Solid   494.40  346.80  494.40  346.80    sa
+% Edge:    87   12
+    0.60 Black Solid   486.00  276.00  502.80  320.40    se
+/ArrowA     1.00   69.27    0.60 Black Solid   494.40  298.20  494.40  298.20    sa
+% Edge:    88   16
+    0.60 Black Solid   288.00  544.80  262.80  441.60    se
+/ArrowA     1.00  256.28    0.60 Black Solid   275.40  493.20  275.40  493.20    sa
+% Edge:    88   14
+    0.60 Black Solid   288.00  367.20  262.80  441.60    se
+/ArrowA     1.00  108.71    0.60 Black Solid   275.40  404.40  275.40  404.40    sa
+% Edge:    89    1
+    0.60 Black Solid   288.00  216.00  168.00  193.20    se
+/ArrowA     1.00  190.76    0.60 Black Solid   228.00  204.60  228.00  204.60    sa
+% Edge:    89    9
+    0.60 Black Solid     8.40   96.00  168.00  193.20    se
+/ArrowA     1.00   31.34    0.60 Black Solid    88.20  144.60   88.20  144.60    sa
+% Edge:    90   33
+    0.60 Black Solid   453.60  118.80  514.80  103.20    se
+/ArrowA     1.00  345.70    0.60 Black Solid   484.20  111.00  484.20  111.00    sa
+% Edge:    90   15
+    0.60 Black Solid   459.60   96.00  514.80  103.20    se
+/ArrowA     1.00    7.43    0.60 Black Solid   487.20   99.60  487.20   99.60    sa
+% Edge:    91    1
+    0.60 Black Solid   288.00  216.00  108.00  288.00    se
+/ArrowA     1.00  158.20    0.60 Black Solid   198.00  252.00  198.00  252.00    sa
+% Edge:    91    9
+    0.60 Black Solid     8.40   96.00  108.00  288.00    se
+/ArrowA     1.00   62.58    0.60 Black Solid    58.20  192.00   58.20  192.00    sa
+% Edge:    92    9
+    0.60 Black Solid     8.40   96.00  196.80  159.60    se
+/ArrowA     1.00   18.65    0.60 Black Solid   102.60  127.80  102.60  127.80    sa
+% Edge:    92    1
+    0.60 Black Solid   288.00  216.00  196.80  159.60    se
+/ArrowA     1.00  211.73    0.60 Black Solid   242.40  187.80  242.40  187.80    sa
+% Edge:    93    1
+    0.60 Black Solid   288.00  216.00   31.20  454.80    se
+/ArrowA     1.00  137.08    0.60 Black Solid   159.60  335.40  159.60  335.40    sa
+% Edge:    93    9
+    0.60 Black Solid     8.40   96.00   31.20  454.80    se
+/ArrowA     1.00   86.36    0.60 Black Solid    19.80  275.40   19.80  275.40    sa
+% Edge:    94    9
+    0.60 Black Solid     8.40   96.00  274.80   68.40    se
+/ArrowA     1.00  354.09    0.60 Black Solid   141.60   82.20  141.60   82.20    sa
+% Edge:    94    1
+    0.60 Black Solid   288.00  216.00  274.80   68.40    se
+/ArrowA     1.00  264.89    0.60 Black Solid   281.40  142.20  281.40  142.20    sa
+% Edge:    95   14
+    0.60 Black Solid   288.00  367.20  358.80  454.80    se
+/ArrowA     1.00   51.05    0.60 Black Solid   323.40  411.00  323.40  411.00    sa
+% Edge:    95   16
+    0.60 Black Solid   288.00  544.80  358.80  454.80    se
+/ArrowA     1.00  308.19    0.60 Black Solid   323.40  499.80  323.40  499.80    sa
+% Edge:    96    9
+    0.60 Black Solid     8.40   96.00  288.00   54.00    se
+/ArrowA     1.00  351.46    0.60 Black Solid   148.20   75.00  148.20   75.00    sa
+% Edge:    96    1
+    0.60 Black Solid   288.00  216.00  288.00   54.00    se
+/ArrowA     1.00  270.00    0.60 Black Solid   288.00  135.00  288.00  135.00    sa
+% Edge:    96    4
+    0.60 Black Solid   562.80   96.00  288.00   54.00    se
+/ArrowA     1.00  188.69    0.60 Black Solid   425.40   75.00  425.40   75.00    sa
+% Edge:    97   16
+    0.60 Black Solid   288.00  544.80  374.40  454.80    se
+/ArrowA     1.00  313.83    0.60 Black Solid   331.20  499.80  331.20  499.80    sa
+% Edge:    97   14
+    0.60 Black Solid   288.00  367.20  374.40  454.80    se
+/ArrowA     1.00   45.40    0.60 Black Solid   331.20  411.00  331.20  411.00    sa
+% Edge:    98   16
+    0.60 Black Solid   288.00  544.80  462.00  468.00    se
+/ArrowA     1.00  336.18    0.60 Black Solid   375.00  506.40  375.00  506.40    sa
+% Edge:    98   13
+    0.60 Black Solid   291.60  279.60  462.00  468.00    se
+/ArrowA     1.00   47.87    0.60 Black Solid   376.80  373.80  376.80  373.80    sa
+% Edge:    99   17
+    0.60 Black Solid   315.60  169.20  324.00  133.20    se
+/ArrowA     1.00  283.13    0.60 Black Solid   319.80  151.20  319.80  151.20    sa
+% Edge:    99    3
+    0.60 Black Solid   309.60  103.20  324.00  133.20    se
+/ArrowA     1.00   64.36    0.60 Black Solid   316.80  118.20  316.80  118.20    sa
+% Edge:   100    9
+    0.60 Black Solid     8.40   96.00  186.00  171.60    se
+/ArrowA     1.00   23.06    0.60 Black Solid    97.20  133.80   97.20  133.80    sa
+% Edge:   100    1
+    0.60 Black Solid   288.00  216.00  186.00  171.60    se
+/ArrowA     1.00  203.52    0.60 Black Solid   237.00  193.80  237.00  193.80    sa
+% Edge:   101    8
+    0.60 Black Solid   486.00  373.20  550.80  320.40    se
+/ArrowA     1.00  320.83    0.60 Black Solid   518.40  346.80  518.40  346.80    sa
+% Edge:   101   12
+    0.60 Black Solid   486.00  276.00  550.80  320.40    se
+/ArrowA     1.00   34.42    0.60 Black Solid   518.40  298.20  518.40  298.20    sa
+% Edge:   102   12
+    0.60 Black Solid   486.00  276.00  534.00  320.40    se
+/ArrowA     1.00   42.77    0.60 Black Solid   510.00  298.20  510.00  298.20    sa
+% Edge:   102    8
+    0.60 Black Solid   486.00  373.20  534.00  320.40    se
+/ArrowA     1.00  312.27    0.60 Black Solid   510.00  346.80  510.00  346.80    sa
+% Edge:   103    1
+    0.60 Black Solid   288.00  216.00  112.80  460.80    se
+/ArrowA     1.00  125.59    0.60 Black Solid   200.40  338.40  200.40  338.40    sa
+% Edge:   103    6
+    0.60 Black Solid   288.00  567.60  112.80  460.80    se
+/ArrowA     1.00  211.37    0.60 Black Solid   200.40  514.20  200.40  514.20    sa
+% Edge:   104    1
+    0.60 Black Solid   288.00  216.00  152.40  218.40    se
+/ArrowA     1.00  178.99    0.60 Black Solid   220.20  217.20  220.20  217.20    sa
+% Edge:   104    9
+    0.60 Black Solid     8.40   96.00  152.40  218.40    se
+/ArrowA     1.00   40.36    0.60 Black Solid    80.40  157.20   80.40  157.20    sa
+% Edge:   105    4
+    0.60 Black Solid   562.80   96.00  426.00  181.20    se
+/ArrowA     1.00  148.09    0.60 Black Solid   494.40  138.60  494.40  138.60    sa
+% Edge:   105    1
+    0.60 Black Solid   288.00  216.00  426.00  181.20    se
+/ArrowA     1.00  345.85    0.60 Black Solid   357.00  198.60  357.00  198.60    sa
+% Edge:   106    9
+    0.60 Black Solid     8.40   96.00  242.40  104.40    se
+/ArrowA     1.00    2.06    0.60 Black Solid   125.40  100.20  125.40  100.20    sa
+% Edge:   106    1
+    0.60 Black Solid   288.00  216.00  242.40  104.40    se
+/ArrowA     1.00  247.77    0.60 Black Solid   265.20  160.20  265.20  160.20    sa
+% Edge:   107   31
+    0.60 Black Solid   355.20   80.40  405.60   87.60    se
+/ArrowA     1.00    8.13    0.60 Black Solid   380.40   84.00  380.40   84.00    sa
+% Edge:   107   15
+    0.60 Black Solid   459.60   96.00  405.60   87.60    se
+/ArrowA     1.00  188.84    0.60 Black Solid   432.60   91.80  432.60   91.80    sa
+% Edge:   108    9
+    0.60 Black Solid     8.40   96.00  223.20  126.00    se
+/ArrowA     1.00    7.95    0.60 Black Solid   115.80  111.00  115.80  111.00    sa
+% Edge:   108    1
+    0.60 Black Solid   288.00  216.00  223.20  126.00    se
+/ArrowA     1.00  234.25    0.60 Black Solid   255.60  171.00  255.60  171.00    sa
+% Edge:   109   16
+    0.60 Black Solid   288.00  544.80  279.60  444.00    se
+/ArrowA     1.00  265.24    0.60 Black Solid   283.80  494.40  283.80  494.40    sa
+% Edge:   109   14
+    0.60 Black Solid   288.00  367.20  279.60  444.00    se
+/ArrowA     1.00   96.24    0.60 Black Solid   283.80  405.60  283.80  405.60    sa
+% Edge:   110    9
+    0.60 Black Solid     8.40   96.00  142.80  231.60    se
+/ArrowA     1.00   45.25    0.60 Black Solid    75.60  163.80   75.60  163.80    sa
+% Edge:   110    1
+    0.60 Black Solid   288.00  216.00  142.80  231.60    se
+/ArrowA     1.00  173.87    0.60 Black Solid   215.40  223.80  215.40  223.80    sa
+% Edge:   111    1
+    0.60 Black Solid   288.00  216.00  205.20  147.60    se
+/ArrowA     1.00  219.56    0.60 Black Solid   246.60  181.80  246.60  181.80    sa
+% Edge:   111    9
+    0.60 Black Solid     8.40   96.00  205.20  147.60    se
+/ArrowA     1.00   14.69    0.60 Black Solid   106.80  121.80  106.80  121.80    sa
+% Change to Solid line
+Solid setdash
+/ic { LightMagenta } def 
+/bc { Plum } def 
+/bw {     0.50 } def 
+/r {     0.00 } def 
+/fos      5.00  def 
+/Helvetica fos  selectfont
+% Vertex:     1
+/ellipse    6.00    6.00    0.00  288.00  216.00 fa
+% Label:     1
+(1) Brown     0.00  288.00  216.00    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+/fos      6.00  def 
+/Helvetica fos  selectfont
+% Vertex:     2
+/box    6.00    6.00    0.00  363.60  124.80 fa
+% Label:     2
+(2) Black     0.00  363.60  124.80    cl
+% Vertex:     3
+/box    6.00    6.00    0.00  309.60  103.20 fa
+% Label:     3
+(3) Black     0.00  309.60  103.20    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:     4
+/diamond    6.00    6.00    0.00  562.80   96.00 fa
+% Label:     4
+(4) Blue     0.00  562.80   96.00    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+/q {     0.50 } def 
+% Vertex:     5
+/box    6.00    6.00    0.00  288.00  241.20 fa
+% Label:     5
+(5) Black     0.00  288.00  241.20    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+% Vertex:     6
+/ellipse    6.00    6.00    0.00  288.00  567.60 fa
+% Label:     6
+(6) Brown     0.00  288.00  567.60    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:     7
+/box    6.00    6.00    0.00  526.80  442.80 fa
+% Label:     7
+(7) Black     0.00  526.80  442.80    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+% Vertex:     8
+/ellipse    6.00    6.00    0.00  486.00  373.20 fa
+% Label:     8
+(8) Brown     0.00  486.00  373.20    cl
+/ic { LightMagenta } def 
+% Vertex:     9
+/ellipse    6.00    6.00    0.00    8.40   96.00 fa
+% Label:     9
+(9) Brown     0.00    8.40   96.00    cl
+/ic { LightYellow } def 
+% Vertex:    10
+/ellipse    6.00    6.00    0.00  440.40  229.20 fa
+% Label:    10
+(10) Brown     0.00  440.40  229.20    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    11
+/diamond    6.00    6.00    0.00  486.00  320.40 fa
+% Label:    11
+(11) Blue     0.00  486.00  320.40    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+/q {     0.50 } def 
+% Vertex:    12
+/box    6.00    6.00    0.00  486.00  276.00 fa
+% Label:    12
+(12) Black     0.00  486.00  276.00    cl
+/ic { LightCyan } def 
+% Vertex:    13
+/box    6.00    6.00    0.00  291.60  279.60 fa
+% Label:    13
+(13) Black     0.00  291.60  279.60    cl
+/ic { LightPurple } def 
+% Vertex:    14
+/box    6.00    6.00    0.00  288.00  367.20 fa
+% Label:    14
+(14) Black     0.00  288.00  367.20    cl
+/ic { LightYellow } def 
+/bc { Plum } def 
+% Vertex:    15
+/ellipse    6.00    6.00    0.00  459.60   96.00 fa
+% Label:    15
+(15) Brown     0.00  459.60   96.00    cl
+/ic { LightMagenta } def 
+% Vertex:    16
+/ellipse    6.00    6.00    0.00  288.00  544.80 fa
+% Label:    16
+(16) Brown     0.00  288.00  544.80    cl
+/ic { LightYellow } def 
+% Vertex:    17
+/ellipse    6.00    6.00    0.00  315.60  169.20 fa
+% Label:    17
+(17) Brown     0.00  315.60  169.20    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:    18
+/box    6.00    6.00    0.00  301.20  134.40 fa
+% Label:    18
+(18) Black     0.00  301.20  134.40    cl
+/ic { LightMagenta } def 
+/bc { Plum } def 
+% Vertex:    19
+/ellipse    6.00    6.00    0.00  448.80  373.20 fa
+% Label:    19
+(19) Brown     0.00  448.80  373.20    cl
+/ic { LightOrange } def 
+% Vertex:    20
+/ellipse    6.00    6.00    0.00  438.00  320.40 fa
+% Label:    20
+(20) Brown     0.00  438.00  320.40    cl
+/ic { White } def 
+% Vertex:    21
+/ellipse    6.00    6.00    0.00  469.20  320.40 fa
+% Label:    21
+(21) Brown     0.00  469.20  320.40    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+% Vertex:    22
+/box    6.00    6.00    0.00  409.20  460.80 fa
+% Label:    22
+(22) Black     0.00  409.20  460.80    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    23
+/diamond    6.00    6.00    0.00  387.60  144.00 fa
+% Label:    23
+(23) Blue     0.00  387.60  144.00    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+/q {     0.50 } def 
+% Vertex:    24
+/box    6.00    6.00    0.00  288.00  328.80 fa
+% Label:    24
+(24) Black     0.00  288.00  328.80    cl
+% Vertex:    25
+/box    6.00    6.00    0.00   91.20  319.20 fa
+% Label:    25
+(25) Black     0.00   91.20  319.20    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+% Vertex:    26
+/ellipse    6.00    6.00    0.00  392.40  457.20 fa
+% Label:    26
+(26) Brown     0.00  392.40  457.20    cl
+/ic { LightMagenta } def 
+% Vertex:    27
+/ellipse    6.00    6.00    0.00   46.80  417.60 fa
+% Label:    27
+(27) Brown     0.00   46.80  417.60    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    28
+/diamond    6.00    6.00    0.00  304.80  190.80 fa
+% Label:    28
+(28) Blue     0.00  304.80  190.80    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+/q {     0.50 } def 
+% Vertex:    29
+/box    6.00    6.00    0.00  567.60  480.00 fa
+% Label:    29
+(29) Black     0.00  567.60  480.00    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    30
+/diamond    6.00    6.00    0.00  309.60   74.40 fa
+% Label:    30
+(30) Blue     0.00  309.60   74.40    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+/q {     0.50 } def 
+% Vertex:    31
+/ellipse    6.00    6.00    0.00  355.20   80.40 fa
+% Label:    31
+(31) Brown     0.00  355.20   80.40    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:    32
+/box    6.00    6.00    0.00   81.60  336.00 fa
+% Label:    32
+(32) Black     0.00   81.60  336.00    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+% Vertex:    33
+/ellipse    6.00    6.00    0.00  453.60  118.80 fa
+% Label:    33
+(33) Brown     0.00  453.60  118.80    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+% Vertex:    34
+/box    6.00    6.00    0.00   91.20  463.20 fa
+% Label:    34
+(34) Black     0.00   91.20  463.20    cl
+/ic { LightCyan } def 
+% Vertex:    35
+/box    6.00    6.00    0.00  172.80  451.20 fa
+% Label:    35
+(35) Black     0.00  172.80  451.20    cl
+/ic { LightMagenta } def 
+/bc { Plum } def 
+% Vertex:    36
+/ellipse    6.00    6.00    0.00  210.00  465.60 fa
+% Label:    36
+(36) Brown     0.00  210.00  465.60    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:    37
+/box    6.00    6.00    0.00  204.00  423.60 fa
+% Label:    37
+(37) Black     0.00  204.00  423.60    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    38
+/diamond    6.00    6.00    0.00  432.00  195.60 fa
+% Label:    38
+(38) Blue     0.00  432.00  195.60    cl
+/ic { White } def 
+% Vertex:    39
+/diamond    6.00    6.00    0.00  214.80  136.80 fa
+% Label:    39
+(39) Blue     0.00  214.80  136.80    cl
+/bc { Plum } def 
+/q {     0.50 } def 
+% Vertex:    40
+/ellipse    6.00    6.00    0.00  464.40  408.00 fa
+% Label:    40
+(40) Brown     0.00  464.40  408.00    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+% Vertex:    41
+/box    6.00    6.00    0.00  296.40  446.40 fa
+% Label:    41
+(41) Black     0.00  296.40  446.40    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+% Vertex:    42
+/ellipse    6.00    6.00    0.00  254.40   92.40 fa
+% Label:    42
+(42) Brown     0.00  254.40   92.40    cl
+/ic { LightMagenta } def 
+% Vertex:    43
+/ellipse    6.00    6.00    0.00   67.20  368.40 fa
+% Label:    43
+(43) Brown     0.00   67.20  368.40    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:    44
+/box    6.00    6.00    0.00  123.60  258.00 fa
+% Label:    44
+(44) Black     0.00  123.60  258.00    cl
+/ic { LightYellow } def 
+/bc { Plum } def 
+% Vertex:    45
+/ellipse    6.00    6.00    0.00   46.80  469.20 fa
+% Label:    45
+(45) Brown     0.00   46.80  469.20    cl
+/ic { LightMagenta } def 
+% Vertex:    46
+/ellipse    6.00    6.00    0.00   54.00  400.80 fa
+% Label:    46
+(46) Brown     0.00   54.00  400.80    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    47
+/diamond    6.00    6.00    0.00    9.60  480.00 fa
+% Label:    47
+(47) Blue     0.00    9.60  480.00    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+/q {     0.50 } def 
+% Vertex:    48
+/ellipse    6.00    6.00    0.00  327.60  451.20 fa
+% Label:    48
+(48) Brown     0.00  327.60  451.20    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+% Vertex:    49
+/box    6.00    6.00    0.00  444.00  465.60 fa
+% Label:    49
+(49) Black     0.00  444.00  465.60    cl
+/ic { LightCyan } def 
+% Vertex:    50
+/box    6.00    6.00    0.00  288.00   16.80 fa
+% Label:    50
+(50) Black     0.00  288.00   16.80    cl
+/ic { LightPurple } def 
+% Vertex:    51
+/box    6.00    6.00    0.00  453.60  320.40 fa
+% Label:    51
+(51) Black     0.00  453.60  320.40    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    52
+/diamond    6.00    6.00    0.00  422.40  165.60 fa
+% Label:    52
+(52) Blue     0.00  422.40  165.60    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+/q {     0.50 } def 
+% Vertex:    53
+/ellipse    6.00    6.00    0.00  151.20  456.00 fa
+% Label:    53
+(53) Brown     0.00  151.20  456.00    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:    54
+/box    6.00    6.00    0.00  116.40  272.40 fa
+% Label:    54
+(54) Black     0.00  116.40  272.40    cl
+/ic { LightMagenta } def 
+/bc { Plum } def 
+% Vertex:    55
+/ellipse    6.00    6.00    0.00  481.20  471.60 fa
+% Label:    55
+(55) Brown     0.00  481.20  471.60    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+% Vertex:    56
+/box    6.00    6.00    0.00  500.40  475.20 fa
+% Label:    56
+(56) Black     0.00  500.40  475.20    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    57
+/diamond    6.00    6.00    0.00  357.60  160.80 fa
+% Label:    57
+(57) Blue     0.00  357.60  160.80    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+/q {     0.50 } def 
+% Vertex:    58
+/box    6.00    6.00    0.00  416.40  150.00 fa
+% Label:    58
+(58) Black     0.00  416.40  150.00    cl
+/ic { LightCyan } def 
+% Vertex:    59
+/box    6.00    6.00    0.00   98.40  304.80 fa
+% Label:    59
+(59) Black     0.00   98.40  304.80    cl
+/ic { White } def 
+/bc { Plum } def 
+% Vertex:    60
+/ellipse    6.00    6.00    0.00  159.60  205.20 fa
+% Label:    60
+(60) Brown     0.00  159.60  205.20    cl
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    61
+/diamond    6.00    6.00    0.00  264.00   80.40 fa
+% Label:    61
+(61) Blue     0.00  264.00   80.40    cl
+/ic { LightGreen } def 
+% Vertex:    62
+/diamond    6.00    6.00    0.00  288.00   34.80 fa
+% Label:    62
+(62) Blue     0.00  288.00   34.80    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+/q {     0.50 } def 
+% Vertex:    63
+/ellipse    6.00    6.00    0.00  307.20  328.80 fa
+% Label:    63
+(63) Brown     0.00  307.20  328.80    cl
+/ic { LightMagenta } def 
+% Vertex:    64
+/ellipse    6.00    6.00    0.00   74.40  351.60 fa
+% Label:    64
+(64) Brown     0.00   74.40  351.60    cl
+% Vertex:    65
+/ellipse    6.00    6.00    0.00   39.60  434.40 fa
+% Label:    65
+(65) Brown     0.00   39.60  434.40    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+% Vertex:    66
+/box    6.00    6.00    0.00  343.20  453.60 fa
+% Label:    66
+(66) Black     0.00  343.20  453.60    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+% Vertex:    67
+/ellipse    6.00    6.00    0.00  422.40  320.40 fa
+% Label:    67
+(67) Brown     0.00  422.40  320.40    cl
+/ic { White } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    68
+/diamond    6.00    6.00    0.00  177.60  182.40 fa
+% Label:    68
+(68) Blue     0.00  177.60  182.40    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+/q {     0.50 } def 
+% Vertex:    69
+/ellipse    6.00    6.00    0.00  132.00  458.40 fa
+% Label:    69
+(69) Brown     0.00  132.00  458.40    cl
+/ic { White } def 
+% Vertex:    70
+/ellipse    6.00    6.00    0.00  518.40  320.40 fa
+% Label:    70
+(70) Brown     0.00  518.40  320.40    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:    71
+/box    6.00    6.00    0.00  133.20  244.80 fa
+% Label:    71
+(71) Black     0.00  133.20  244.80    cl
+/ic { LightMagenta } def 
+/bc { Plum } def 
+% Vertex:    72
+/ellipse    6.00    6.00    0.00   61.20  384.00 fa
+% Label:    72
+(72) Brown     0.00   61.20  384.00    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+% Vertex:    73
+/box    6.00    6.00    0.00  338.40  141.60 fa
+% Label:    73
+(73) Black     0.00  338.40  141.60    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    74
+/diamond    6.00    6.00    0.00  394.80  108.00 fa
+% Label:    74
+(74) Blue     0.00  394.80  108.00    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+/q {     0.50 } def 
+% Vertex:    75
+/box    6.00    6.00    0.00  312.00  448.80 fa
+% Label:    75
+(75) Black     0.00  312.00  448.80    cl
+% Vertex:    76
+/box    6.00    6.00    0.00  448.80  260.40 fa
+% Label:    76
+(76) Black     0.00  448.80  260.40    cl
+/ic { White } def 
+/bc { Plum } def 
+% Vertex:    77
+/ellipse    6.00    6.00    0.00  444.00  244.80 fa
+% Label:    77
+(77) Brown     0.00  444.00  244.80    cl
+/ic { LightMagenta } def 
+% Vertex:    78
+/ellipse    6.00    6.00    0.00  426.00  463.20 fa
+% Label:    78
+(78) Brown     0.00  426.00  463.20    cl
+/ic { LightYellow } def 
+% Vertex:    79
+/ellipse    6.00    6.00    0.00  453.60  276.00 fa
+% Label:    79
+(79) Brown     0.00  453.60  276.00    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    80
+/diamond    6.00    6.00    0.00  526.80  408.00 fa
+% Label:    80
+(80) Blue     0.00  526.80  408.00    cl
+% Vertex:    81
+/diamond    6.00    6.00    0.00  241.20  441.60 fa
+% Label:    81
+(81) Blue     0.00  241.20  441.60    cl
+% Vertex:    82
+/diamond    6.00    6.00    0.00  232.80  116.40 fa
+% Label:    82
+(82) Blue     0.00  232.80  116.40    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+/q {     0.50 } def 
+% Vertex:    83
+/box    6.00    6.00    0.00   68.40  465.60 fa
+% Label:    83
+(83) Black     0.00   68.40  465.60    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+% Vertex:    84
+/ellipse    6.00    6.00    0.00   22.80  474.00 fa
+% Label:    84
+(84) Brown     0.00   22.80  474.00    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:    85
+/box    6.00    6.00    0.00  418.80  128.40 fa
+% Label:    85
+(85) Black     0.00  418.80  128.40    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+% Vertex:    86
+/ellipse    6.00    6.00    0.00  436.80  212.40 fa
+% Label:    86
+(86) Brown     0.00  436.80  212.40    cl
+/ic { LightMagenta } def 
+% Vertex:    87
+/ellipse    6.00    6.00    0.00  502.80  320.40 fa
+% Label:    87
+(87) Brown     0.00  502.80  320.40    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    88
+/diamond    6.00    6.00    0.00  262.80  441.60 fa
+% Label:    88
+(88) Blue     0.00  262.80  441.60    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+/q {     0.50 } def 
+% Vertex:    89
+/box    6.00    6.00    0.00  168.00  193.20 fa
+% Label:    89
+(89) Black     0.00  168.00  193.20    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+% Vertex:    90
+/ellipse    6.00    6.00    0.00  514.80  103.20 fa
+% Label:    90
+(90) Brown     0.00  514.80  103.20    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:    91
+/box    6.00    6.00    0.00  108.00  288.00 fa
+% Label:    91
+(91) Black     0.00  108.00  288.00    cl
+/ic { White } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    92
+/diamond    6.00    6.00    0.00  196.80  159.60 fa
+% Label:    92
+(92) Blue     0.00  196.80  159.60    cl
+/ic { LightMagenta } def 
+/bc { Plum } def 
+/q {     0.50 } def 
+% Vertex:    93
+/ellipse    6.00    6.00    0.00   31.20  454.80 fa
+% Label:    93
+(93) Brown     0.00   31.20  454.80    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    94
+/diamond    6.00    6.00    0.00  274.80   68.40 fa
+% Label:    94
+(94) Blue     0.00  274.80   68.40    cl
+/ic { White } def 
+/bc { Plum } def 
+/q {     0.50 } def 
+% Vertex:    95
+/ellipse    6.00    6.00    0.00  358.80  454.80 fa
+% Label:    95
+(95) Brown     0.00  358.80  454.80    cl
+/ic { LightMagenta } def 
+% Vertex:    96
+/ellipse    6.00    6.00    0.00  288.00   54.00 fa
+% Label:    96
+(96) Brown     0.00  288.00   54.00    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:    97
+/box    6.00    6.00    0.00  374.40  454.80 fa
+% Label:    97
+(97) Black     0.00  374.40  454.80    cl
+/ic { LightGreen } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:    98
+/diamond    6.00    6.00    0.00  462.00  468.00 fa
+% Label:    98
+(98) Blue     0.00  462.00  468.00    cl
+/ic { White } def 
+/bc { Plum } def 
+/q {     0.50 } def 
+% Vertex:    99
+/ellipse    6.00    6.00    0.00  324.00  133.20 fa
+% Label:    99
+(99) Brown     0.00  324.00  133.20    cl
+/ic { LightPurple } def 
+/bc { BlueViolet } def 
+% Vertex:   100
+/box    6.00    6.00    0.00  186.00  171.60 fa
+% Label:   100
+(100) Black     0.00  186.00  171.60    cl
+/ic { LightMagenta } def 
+/bc { Plum } def 
+% Vertex:   101
+/ellipse    6.00    6.00    0.00  550.80  320.40 fa
+% Label:   101
+(101) Brown     0.00  550.80  320.40    cl
+/ic { LightOrange } def 
+% Vertex:   102
+/ellipse    6.00    6.00    0.00  534.00  320.40 fa
+% Label:   102
+(102) Brown     0.00  534.00  320.40    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:   103
+/box    6.00    6.00    0.00  112.80  460.80 fa
+% Label:   103
+(103) Black     0.00  112.80  460.80    cl
+/ic { LightPurple } def 
+% Vertex:   104
+/box    6.00    6.00    0.00  152.40  218.40 fa
+% Label:   104
+(104) Black     0.00  152.40  218.40    cl
+/ic { LightOrange } def 
+/bc { Plum } def 
+% Vertex:   105
+/ellipse    6.00    6.00    0.00  426.00  181.20 fa
+% Label:   105
+(105) Brown     0.00  426.00  181.20    cl
+% Vertex:   106
+/ellipse    6.00    6.00    0.00  242.40  104.40 fa
+% Label:   106
+(106) Brown     0.00  242.40  104.40    cl
+/ic { White } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:   107
+/diamond    6.00    6.00    0.00  405.60   87.60 fa
+% Label:   107
+(107) Blue     0.00  405.60   87.60    cl
+/ic { LightYellow } def 
+/bc { Plum } def 
+/q {     0.50 } def 
+% Vertex:   108
+/ellipse    6.00    6.00    0.00  223.20  126.00 fa
+% Label:   108
+(108) Brown     0.00  223.20  126.00    cl
+% Vertex:   109
+/ellipse    6.00    6.00    0.00  279.60  444.00 fa
+% Label:   109
+(109) Brown     0.00  279.60  444.00    cl
+/ic { LightCyan } def 
+/bc { BlueViolet } def 
+% Vertex:   110
+/box    6.00    6.00    0.00  142.80  231.60 fa
+% Label:   110
+(110) Black     0.00  142.80  231.60    cl
+/ic { White } def 
+/bc { Fuchsia } def 
+/q {     0.20 } def 
+% Vertex:   111
+/diamond    6.00    6.00    0.00  205.20  147.60 fa
+% Label:   111
+(111) Blue     0.00  205.20  147.60    cl
+showpage end end

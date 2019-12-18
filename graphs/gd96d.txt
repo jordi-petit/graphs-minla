@@ -1,0 +1,5 @@
+Represents the structure and content of a
+fragment of the World-Wide Web.
+
+http://portal.research.bell-labs.com/orgs/ssr/people/north/contest.html
+

@@ -1,0 +1,2 @@
+Random geometric graph
+n=1000, r=0.075
